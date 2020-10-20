@@ -1,20 +1,18 @@
- protected override void OnActivityResult(int requestCode, Result resultCode, Intent intent)
+  public Task<Stream> GetImageStreamAsync()
         {
-            base.OnActivityResult(requestCode, resultCode, intent);
+            // Define the Intent for getting images
+            Intent intent = new Intent();
+            intent.SetType("image/*");
+            intent.SetAction(Intent.ActionGetContent);
 
-            if (requestCode == PickImageId)
-            {
-                if ((resultCode == Result.Ok) && (intent != null))
-                {
-                    Android.Net.Uri uri = intent.Data;
-                    Stream stream = ContentResolver.OpenInputStream(uri);
+            // Start the picture-picker activity (resumes in MainActivity.cs)
+            MainActivity.Instance.StartActivityForResult(
+                Intent.CreateChooser(intent, "Select Picture"),
+                MainActivity.PickImageId);
 
-                    // Set the Stream as the completion of the Task
-                    PickImageTaskCompletionSource.SetResult(stream);
-                }
-                else
-                {
-                    PickImageTaskCompletionSource.SetResult(null);
-                }
-            }
+            // Save the TaskCompletionSource object as a MainActivity property
+            MainActivity.Instance.PickImageTaskCompletionSource = new TaskCompletionSource<Stream>();
+
+            // Return Task object
+            return MainActivity.Instance.PickImageTaskCompletionSource.Task;
         }
