@@ -1,18 +1,17 @@
-  public Task<Stream> GetImageStreamAsync()
-        {
-            // Define the Intent for getting images
-            Intent intent = new Intent();
-            intent.SetType("image/*");
-            intent.SetAction(Intent.ActionGetContent);
+Stream stream = await DependencyService.Get<IPhotoPickerService>().GetImageStreamAsync();
 
-            // Start the picture-picker activity (resumes in MainActivity.cs)
-            MainActivity.Instance.StartActivityForResult(
-                Intent.CreateChooser(intent, "Select Picture"),
-                MainActivity.PickImageId);
 
-            // Save the TaskCompletionSource object as a MainActivity property
-            MainActivity.Instance.PickImageTaskCompletionSource = new TaskCompletionSource<Stream>();
 
-            // Return Task object
-            return MainActivity.Instance.PickImageTaskCompletionSource.Task;
-        }
+                byte[] buffer = new byte[16 * 1024];
+                byte[] byteArray = null;
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    int read;
+                    while ((read = stream.Read(buffer, 0, buffer.Length)) > 0)
+                    {
+                        ms.Write(buffer, 0, read);
+                    }
+                    byteArray = ms.ToArray();
+                }
+
+                ImageDisplay.Source = ImageSource.FromStream(() => new MemoryStream(byteArray));
