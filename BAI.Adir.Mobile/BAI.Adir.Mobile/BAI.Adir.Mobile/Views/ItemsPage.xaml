@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.ItemsPage"
+             Title="{Binding Title}"
+             xmlns:local="clr-namespace:BAI.Adir.Mobile.ViewModels"  
+             xmlns:model="clr-namespace:BAI.Adir.Mobile.Models"  
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="ToolbarItem_Clicked" />
+    </ContentPage.ToolbarItems>
+
+</ContentPage>

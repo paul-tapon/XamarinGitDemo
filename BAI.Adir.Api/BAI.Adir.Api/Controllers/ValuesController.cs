@@ -14,6 +14,7 @@ namespace BAI.Adir.Api.Controllers
         [Authorize]
         public IEnumerable<string> Get()
         {
+            var p=RequestContext.Principal;
             return new string[] { "value1", "value2" };
         }
 
