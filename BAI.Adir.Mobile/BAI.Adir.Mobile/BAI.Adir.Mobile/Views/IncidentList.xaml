@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.IncidentList">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="10">
+                <!--region-->
+                <Picker x:Name="Region" Title="Region" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>I</x:String>
+                        <x:String>I</x:String>
+                        <x:String>III</x:String>
+
+                        <x:String>IV</x:String>
+                        <x:String>V</x:String>
+
+                    </Picker.Items>
+
+                </Picker>
+
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <!--Province-->
+                <Picker x:Name="Province" Title="Province" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>Cavite</x:String>
+                        <x:String>Laguna</x:String>
+                        <x:String>Batangas</x:String>
+
+                        <x:String>Rizal</x:String>
+                        <x:String>Quezon</x:String>
+
+                    </Picker.Items>
+
+                </Picker>
+
+            </StackLayout>
+
+            <StackLayout Orientation="Horizontal">
+                <!--Municipality-->
+                <Picker x:Name="Municipality" Title="Municipality" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>Lipa</x:String>
+                        <x:String>Malvar</x:String>
+                        <x:String>Tanauan</x:String>
+
+
+                        <x:String>Balete</x:String>
+                        <x:String>Mataas na Kahoy</x:String>
+
+                    </Picker.Items>
+                </Picker>
+                <Picker x:Name="Species" Title="Species" HorizontalOptions="FillAndExpand">
+                    <Picker.Items>
+                        <x:String>Canine</x:String>
+                        <x:String>Caprine</x:String>
+                        <x:String>Pig</x:String>
+
+
+                        <x:String>Cow</x:String>
+                        <x:String>Lamb</x:String>
+
+                    </Picker.Items>
+
+                </Picker>
+
+            </StackLayout>
+
+            <ListView x:Name="ProductListView" ItemsSource="{Binding Products}" HasUnevenRows="True" 
+                  RefreshCommand="{Binding LoadProductsCommand}" IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                  CachingStrategy="RecycleElement" ItemTapped="ProductListView_ItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding DisplayPhotoURL}" HeightRequest="50"/>
+
+                                        <StackLayout Orientation="Horizontal">
+
+                                            <Label Text="{Binding name}" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>
+                                            <Label Text="-" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>
+                                            <Label Text="{Binding price, StringFormat='{0:C}'}" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>
+
+                                        </StackLayout>
+
+
+
+                                    </StackLayout>
+                                    <Label Text="{Binding category}" Margin="10,5"/>
+                                </StackLayout>
+
+
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
