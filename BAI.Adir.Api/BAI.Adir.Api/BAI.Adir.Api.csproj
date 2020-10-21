@@ -215,6 +215,7 @@
     <Compile Include="Controllers\ProvincesController.cs" />
     <Compile Include="Controllers\RegionsController.cs" />
     <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\SpeciesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Domain\Context\AdirContext.cs" />
     <Compile Include="Domain\Model\AppUser.cs" />
