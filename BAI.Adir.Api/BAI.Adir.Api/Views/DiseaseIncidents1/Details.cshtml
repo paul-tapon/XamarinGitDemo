@@ -1,0 +1,186 @@
+﻿@model BAI.Adir.Api.Domain.Model.DiseaseIncident
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DiseaseIncident</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Barangay.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Barangay.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedByAppUser.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedByAppUser.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedByAppUser.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedByAppUser.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportedByFirstname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportedByFirstname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportedByLastname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportedByLastname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportedByMiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportedByMiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ReportedBySuffixName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ReportedBySuffixName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactPerson)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ContactPerson)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SymptomsStartDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SymptomsStartDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeceasedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeceasedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfInfected)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfInfected)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NumberOfDeaths)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NumberOfDeaths)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Population)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Population)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Symptoms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Symptoms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsActive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsActive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedOn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiedOn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiedOn)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DiseaseIncidentId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
