@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.RegisterPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Register User"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout Margin="5">
+            <!--Change to browse-->
+            <Image Source="https://bit.ly/3dG7Aes" HeightRequest="150" WidthRequest="150"/>
+            
+            <Label Text="First Name" FontSize="Medium" />
+            <Entry Text="{Binding FirstName, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Middle Name" FontSize="Medium" />
+            <Entry Text="{Binding MiddleName, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Last Name" FontSize="Medium" />
+            <Entry Text="{Binding LastName, Mode=TwoWay}" FontSize="Medium" />
+            
+            <Label Text="Username" FontSize="Medium" />
+            <Entry Text="{Binding Username, Mode=TwoWay}" FontSize="Medium" />
+            
+            <Label Text="Password" FontSize="Medium" />
+            <Entry Text="{Binding Password, Mode=TwoWay}" FontSize="Medium" IsPassword="True" />
+            <Label Text="Repeat Password" FontSize="Medium" />
+            <Entry IsPassword="True" FontSize="Medium" />
+
+            <Label Text="Email address" FontSize="Medium" />
+            <Entry Text="{Binding Email}" Keyboard="Email" FontSize="Medium" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button x:Name="buttonSave" Clicked="buttonSave_Clicked" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
