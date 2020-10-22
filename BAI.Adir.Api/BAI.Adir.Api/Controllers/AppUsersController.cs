@@ -6,6 +6,8 @@ using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Net.Mail;
+using System.Web;
 using System.Web.Http;
 using System.Web.Http.Description;
 using BAI.Adir.Api.Domain.Context;
@@ -34,6 +36,28 @@ namespace BAI.Adir.Api.Controllers
             }
 
             return Ok(appUser);
+        }
+
+        [Route("api/appUsers/verify/")]
+        public HttpResponseMessage GetVerify(int id)
+        {
+            var userToUpdate = db.AppUsers.FirstOrDefault(a => a.AppUserId == id);
+
+            HttpResponseMessage hpo = new HttpResponseMessage(HttpStatusCode.Moved);
+            hpo.Headers.Location = new Uri("https://localhost:44395?ok");
+            HttpResponseMessage hp = new HttpResponseMessage(HttpStatusCode.Moved);
+            hp.Headers.Location = new Uri("https://localhost:44395?notok");
+
+
+            if (userToUpdate == null)
+                return hp;
+
+            userToUpdate.EmailConfirmed = true;
+            db.SaveChanges();
+
+            return hpo;
+
+
         }
 
         // PUT: api/AppUsers/5
@@ -83,8 +107,54 @@ namespace BAI.Adir.Api.Controllers
             db.AppUsers.Add(appUser);
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = appUser.AppUserId }, appUser);
+            if (SendVerificationMail(appUser.Email,appUser.AppUserId))
+            {
+
+                return CreatedAtRoute("DefaultApi", new { id = appUser.AppUserId }, appUser);
+
+            }
+            else
+            {
+                return BadRequest();
+            }
         }
+
+        public static bool SendVerificationMail(string emailaddress,int id)
+        {
+            try
+            { 
+
+                var fromaddress = new MailAddress("adir@firemail.cc", "[no-reply] ADIR");
+                var toaddress = new MailAddress(emailaddress);
+                string fromPassword = "147258369";
+                string subject = "[NO-REPLY]";
+                string body = "Your account has been registered. Please click <a href='https://localhost:44395/api/appUsers/verify?id="+id.ToString()+"'>here</a> to activate your account";
+                SmtpClient smtp = new SmtpClient();
+                MailMessage e_mail = new MailMessage();
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new System.Net.NetworkCredential(fromaddress.Address, fromPassword);
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Host = "mail.cock.li";
+                smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+
+                e_mail = new MailMessage();
+                e_mail.From = new MailAddress(fromaddress.Address, "[no-reply] ADIR");
+                e_mail.To.Add(toaddress.Address);
+                e_mail.Subject = subject;
+                e_mail.IsBodyHtml = true;
+                e_mail.Body = body;
+
+                smtp.Send(e_mail);
+
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
 
         // DELETE: api/AppUsers/5
         [ResponseType(typeof(AppUser))]
