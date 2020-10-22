@@ -1,12 +1,12 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
-namespace BAI.Adir.Api.Domain.Model
+namespace BAI.Adir.Mobile.Models
 {
-    public class DiseaseIncident : ModelBase
+    public class DiseaseIncident
     {
-        [Key]
         public int DiseaseIncidentId { get; set; }
 
         public string ReportedByFirstname { get; set; }
@@ -43,18 +43,39 @@ namespace BAI.Adir.Api.Domain.Model
         public string Notes { get; set; }
 
         //location
-        [ForeignKey("Barangay")]
+
         public int BarangayId { get; set; }
-        public virtual Barangay Barangay { get; set; }
+        public Barangay Barangay { get; set; }
+
+        
 
         public double Latitude { get; set; }
-        public double Longitude { get; set; }
+        public double Longitude
+        {
+            get; set;
+        }
 
-        [ForeignKey("Species")]
+        public Species Species { get; set; }
 
-        public int SpeciesId { get; set; }
+        public string SpeciesName
+        {
+            get
+            {
+                return Species.Name;
+            }
+        }
 
-        public virtual Species Species { get; set; }
-        
+
+
+        public string FullAddress
+        {
+            get
+            {
+
+                //return "Brgy : "+  ;Barangay != null ? Barangay.Name :"";
+                return Barangay.Name + " " + Barangay.Municipality.Name + " " + Barangay.Municipality.Province.Name;
+
+            }
+        }
     }
 }

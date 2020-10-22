@@ -84,6 +84,7 @@
 
         <ShellContent Title="About" Icon="tab_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
         <ShellContent Title="Test" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:TestPage}" />
+        <ShellContent Title="Incident List" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:IncidentList}" />
 
     </FlyoutItem>
 

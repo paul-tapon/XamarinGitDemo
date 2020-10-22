@@ -21,19 +21,44 @@ namespace BAI.Adir.Api.Controllers
 
         [Route("api/DiseaseIncident/filter")]
 
-        public IHttpActionResult Get(string region,string province, string municipality, string barangay, string species, string sortField, string sortDir)
+        public IHttpActionResult Get(int region,int province, int municipality, int barangay, int species, string sortField, string sortDir)
         {
             var context = new AdirContext();
 
             IQueryable<DiseaseIncident>
                 query = context.DiseaseIncidents;
-
-            if (!string.IsNullOrEmpty(region))
+            try
             {
-                query = query.Where(p => p.Barangay.Municipality.Province.Region.Name == region);
+
+
+                if (region != 0)
+                {
+                    query = query.Where(p => p.Barangay.Municipality.Province.Region.RegionId == region);
+
+                }
+                if (province !=0 )
+                {
+                    query = query.Where(p => p.Barangay.Municipality.Province.ProvinceId == province);
+
+                }
+                if (municipality != 0)
+                {
+                    query = query.Where(p => p.Barangay.Municipality.MunicipalityId == municipality);
+
+                }
+                if (species !=0 )
+                {
+                    query = query.Where(p => p.SpeciesId == species);
+                }
                     
+
+                return Ok(query.ToList());
             }
-            return Ok(query.ToList());
+            catch
+            {
+                var data = query.ToList();
+                return Ok(data);
+            }
         }
     }
 }
