@@ -12,10 +12,11 @@ namespace BAI.Adir.Mobile.ViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
+        string apiUrl = "https://bai-adir-api.conveyor.cloud/api/";
         //public Command RegisterCommand { get; }
         public Command CancelCommand { get; }
         public Command SaveCommand { get; }
-        //public AppUser AppUser { get; set; }
+        public RegisterDto RegisterDto { get; set; }
         ////API
         //string apiUrl = "https://webapidemo-ls8.conveyor.cloud/api/";
 
@@ -24,48 +25,54 @@ namespace BAI.Adir.Mobile.ViewModels
             CancelCommand = new Command(OnCancel);
             //RegisterCommand = new Command(OnRegisterClicked);
             SaveCommand = new Command(OnSaveClicked);
+            RegisterDto = new RegisterDto();
         }
         //private async void OnRegisterClicked(object obj)
         //{
         //    await Shell.Current.GoToAsync($"//{nameof(RegisterPage)}");
-        //}
+        //}        
         private async void OnSaveClicked(object obj)
         {
-            //var client = new RestClient(apiUrl);
-            //var request = new RestRequest("appUsers", DataFormat.Json);
-            ////var context = new AppUser();
+            //await DisplayAlert("Error", "API not success", "OK");
+
+            var client = new RestClient(apiUrl);
+            var request = new RestRequest("RegisterAppUser", DataFormat.Json);
+            //var context = new AppUser();
 
             //OnPropertyChanged("IsBusy");
-            //try
-            //{
-                
-            //    request.AddJsonBody(AppUser);
-            //    request.Method = Method.POST;
+            try
+            {
+                //request.AddQueryParameter
+                request.AddJsonBody(RegisterDto);
+                request.Method = Method.POST;
 
-            //    var response = await client.ExecuteAsync(request);
-            //    var productData = JsonConvert.DeserializeObject<AppUser>(response.Content);
+                var response = await client.ExecuteAsync(request);
+                //var productData = JsonConvert.DeserializeObject<AppUser>(response.Content);
 
-            //    if (response.StatusCode == HttpStatusCode.Created)
-            //    {
-            //        //await UploadPhoto(productData.ProductID);
-            //        //await DisplayAlert("System Message", response.Content, "OK");
+                if (response.StatusCode == HttpStatusCode.Created)
+                {
+                    //await UploadPhoto(productData.ProductID);
+                    //await DisplayAlert("System Message", response.Content, "OK");
+                    //await DisplayAlert("Success", "Please check your email for verification", "OK");
+                    //await Shell.Current.GoToAsync("//LoginPage");
+                    //isSavingForm(_isSaving);
+                }
+                else
+                {
+                    //await DisplayAlert("Error", "API not success", "OK");
+                    //await Shell.Current.GoToAsync("//LoginPage");
+                    //isSavingForm(_isSaving);
+                }
+            }
+            catch (Exception ex)
+            {
 
-            //        await Shell.Current.GoToAsync("//LoginPage");
-            //    }
-            //    else
-            //    {
-            //        await Shell.Current.GoToAsync("//LoginPage");
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-
-            //}
-            //finally
-            //{
-            //    IsBusy = false;
-            //    OnPropertyChanged("IsBusy");
-            //}
+            }
+            finally
+            {
+                //IsBusy = false;
+                //OnPropertyChanged("IsBusy");
+            }
         }
         private async void OnCancel()
         {
