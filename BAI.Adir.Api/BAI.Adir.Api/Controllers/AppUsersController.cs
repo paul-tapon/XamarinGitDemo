@@ -12,6 +12,8 @@ using System.Web.Http;
 using System.Web.Http.Description;
 using BAI.Adir.Api.Domain.Context;
 using BAI.Adir.Api.Domain.Model;
+using BAI.Adir.Api.Helper;
+using BAI.Adir.Api.Models.DTO;
 
 namespace BAI.Adir.Api.Controllers
 {
@@ -24,7 +26,6 @@ namespace BAI.Adir.Api.Controllers
         {
             return db.AppUsers;
         }
-
         // GET: api/AppUsers/5
         [ResponseType(typeof(AppUser))]
         public IHttpActionResult GetAppUser(int id)
@@ -96,21 +97,63 @@ namespace BAI.Adir.Api.Controllers
         }
 
         // POST: api/AppUsers
+        //[Route("api/AppUsers")]
         [ResponseType(typeof(AppUser))]
-        public IHttpActionResult PostAppUser(AppUser appUser)
+        public IHttpActionResult PostAppUser([FromBody] AppUser appUser)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var genSalt = EncryptionHelper.CreateSalt();
 
+            appUser.PasswordHash = EncryptionHelper.EncryptPassword(appUser.PasswordHash, genSalt);
+            appUser.PasswordSalt = genSalt;
+            
             db.AppUsers.Add(appUser);
+           
             db.SaveChanges();
 
             if (SendVerificationMail(appUser.Email,appUser.AppUserId))
             {
 
                 return CreatedAtRoute("DefaultApi", new { id = appUser.AppUserId }, appUser);
+
+            }
+            else
+            {
+                return BadRequest();
+            }
+        }
+        [Route("api/RegisterAppUser")]
+        [ResponseType(typeof(RegisterDto))]
+        public IHttpActionResult PostRegisterAppUser([FromBody] RegisterDto registerDto)
+        {
+            var context = new AppUser();
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var genSalt = EncryptionHelper.CreateSalt();
+
+            context.FirstName = registerDto.FirstName;
+            context.MiddleName = registerDto.MiddleName;
+            context.LastName = registerDto.LastName;
+            context.PasswordHash = EncryptionHelper.EncryptPassword(registerDto.PlainPassword, genSalt);
+            context.PasswordSalt = genSalt;
+            context.Email = registerDto.Email;
+            context.Username = registerDto.Username;
+
+            //appUser.PasswordHash = EncryptionHelper.EncryptPassword(appUser.PasswordHash, genSalt);
+
+            db.AppUsers.Add(context);
+
+            db.SaveChanges();
+
+            if (SendVerificationMail(context.Email, context.AppUserId))
+            {
+
+                return CreatedAtRoute("DefaultApi", new { id = context.AppUserId }, context);
 
             }
             else
