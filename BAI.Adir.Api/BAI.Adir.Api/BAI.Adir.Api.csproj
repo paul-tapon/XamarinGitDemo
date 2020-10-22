@@ -209,7 +209,11 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+<<<<<<< Updated upstream
     <Compile Include="Controllers\BarangaysController.cs" />
+=======
+    <Compile Include="Controllers\AppUsersController.cs" />
+>>>>>>> Stashed changes
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipalitiesController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
@@ -235,6 +239,10 @@
     <Compile Include="Migrations\202010201002489_InitialDB.cs" />
     <Compile Include="Migrations\202010201002489_InitialDB.designer.cs">
       <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010210255509_v1_Git_Pull.cs" />
+    <Compile Include="Migrations\202010210255509_v1_Git_Pull.designer.cs">
+      <DependentUpon>202010210255509_v1_Git_Pull.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\LoginDto.cs" />
@@ -326,6 +334,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010201002489_InitialDB.resx">
       <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010210255509_v1_Git_Pull.resx">
+      <DependentUpon>202010210255509_v1_Git_Pull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
