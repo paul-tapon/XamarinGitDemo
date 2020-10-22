@@ -217,6 +217,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AppUsersController.cs" />
     <Compile Include="Controllers\BarangaysController.cs" />
+
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MunicipalitiesController.cs" />
     <Compile Include="Controllers\ProvincesController.cs" />
@@ -244,6 +245,7 @@
     <Compile Include="Migrations\202010201002489_InitialDB.designer.cs">
       <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
     </Compile>
+
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\LoginDto.cs" />
     <Compile Include="Models\DTO\RegisterDto.cs" />
@@ -335,6 +337,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202010201002489_InitialDB.resx">
       <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010210255509_v1_Git_Pull.resx">
+      <DependentUpon>202010210255509_v1_Git_Pull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
