@@ -15,6 +15,7 @@ namespace BAI.Adir.Mobile
 
             DependencyService.Register<MockDataStore>();
             MainPage = new AppShell();
+            //MainPage = new IncidentList();
         }
 
         protected override void OnStart()
