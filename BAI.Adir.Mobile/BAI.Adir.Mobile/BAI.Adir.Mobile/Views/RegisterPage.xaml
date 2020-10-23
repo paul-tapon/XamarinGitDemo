@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.RegisterPage"
+             Shell.PresentationMode="ModalAnimated"
+             Title="Register User"
+             BackgroundColor="Black">
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <StackLayout>
+            <!--Change to browse-->
+                <!--Image Source="https://bit.ly/3dG7Aes" HeightRequest="150" WidthRequest="150"/-->
+                <Label Text="Welcome to ADIR!" FontSize="30" HorizontalTextAlignment="Center" Margin="0,150,0,150"/>
+
+                <Label Text="First Name" FontSize="Medium" />
+            <Entry x:Name="entryFirstName" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.FirstName, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Middle Name" FontSize="Medium" />
+                <Entry x:Name="entryMiddleName" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.MiddleName, Mode=TwoWay}" FontSize="Medium" />
+            <Label Text="Last Name" FontSize="Medium" />
+                <Entry x:Name="entryLastName" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.LastName, Mode=TwoWay}" FontSize="Medium" />
+            
+            <Label Text="Username" FontSize="Medium" />
+                <Entry x:Name="entryUsername" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.Username, Mode=TwoWay}" FontSize="Medium" />
+            
+            <Label Text="Password" FontSize="Medium" />
+                <Entry x:Name="entryPassword" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.PlainPassword, Mode=TwoWay}" FontSize="Medium" IsPassword="True" />
+            <Label Text="Repeat Password" FontSize="Medium" />
+                <Entry x:Name="entryRepeatPassword" TextChanged="EntryTextChanged" IsPassword="True" FontSize="Medium" />
+
+            <Label Text="Email address" FontSize="Medium" />
+                <Entry x:Name="entryEmail" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.Email}" Keyboard="Email" FontSize="Medium" />
+
+            <StackLayout Orientation="Horizontal">
+                <Button Text="Cancel" Command="{Binding CancelCommand}" HorizontalOptions="FillAndExpand"></Button>
+                <Button x:Name="buttonSave" Clicked="buttonSave_Clicked" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
+            </StackLayout>
+        </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

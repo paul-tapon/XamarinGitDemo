@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.IncidentListView">
+    <ContentPage.Content>
+        <ScrollView>
+        <StackLayout>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" >
+                    <Image x:Name="Image" Source="animalhealthbanner.jpg" HeightRequest="100"/>
+
+                </StackLayout>
+                <StackLayout HorizontalOptions="Center">
+                    <Label Text="Species" TextColor="Red"/>
+                    <Label Text="{Binding DiseaseIncident.SpeciesName}" TextColor="Blue"/>
+                    
+                </StackLayout>
+
+
+
+                <StackLayout Padding="10,10,10,0">
+
+                    <Label Text="Symptoms:  " TextColor="Red"/>
+                    <Frame >
+                <Label Text="{Binding DiseaseIncident.Symptoms}"/>
+                    </Frame>
+                    <StackLayout Orientation="Horizontal">
+                        <StackLayout>
+                    <Label Text="Symptoms Start Date:  " TextColor="Red"/>
+                <Label Text="{Binding DiseaseIncident.SymptomsStartDate}"/>
+                        </StackLayout>
+                        <StackLayout>
+                        <Label Text="Deceased Date:  " TextColor="Black"/>
+                <Label Text="{Binding DiseaseIncident.DeceasedDate}" />
+                <Label Text="Notes:  " TextColor="Black"/>
+                        </StackLayout>
+                    </StackLayout>
+                    <Frame>
+                <Label Text="{Binding DiseaseIncident.Notes}" />
+                    </Frame>
+
+                </StackLayout>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10,10,10,5" >
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Population:  " TextColor="Green" WidthRequest="90"/>
+                        <Label Text="{Binding DiseaseIncident.Population}" TextDecorations="Underline" WidthRequest="100"/>
+                    </StackLayout>
+                    <StackLayout Orientation="Horizontal" >
+                        
+                        <Label Text="Infected:  " TextColor="Black"  WidthRequest="100"/>
+                        <Label Text="{Binding DiseaseIncident.NumberOfInfected}" TextDecorations="Underline"  WidthRequest="100" />
+                        <Label Text="Deaths:  " TextColor="Red" WidthRequest="100" />
+                        <Label Text="{Binding DiseaseIncident.NumberOfDeaths}" TextDecorations="Underline"  WidthRequest="100"/>
+                    </StackLayout>
+                </StackLayout>
+
+            <StackLayout Orientation="Vertical" Padding="10,10,10,0" >
+                <Label Text="Address: " TextColor="Green"/>
+                <Frame>
+                    <Label x:Name="FullAddress"  />
+                    </Frame>
+            </StackLayout>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Padding="10,10,10,5">
+                <Label Text="Coordinates:  " TextColor="Green"/>
+                <StackLayout Orientation="Horizontal">
+                <Label Text="Latitude:  " TextColor="Blue"/>
+                <Label Text="{Binding DiseaseIncident.Latitude}" TextDecorations="Underline"/>
+                <Label Text="Longitude:  " TextColor="Blue"/>
+                <Label Text="{Binding DiseaseIncident.Longitude}" TextDecorations="Underline" />
+                </StackLayout>
+                <StackLayout Orientation="Vertical" Padding="10,10,0,0" >
+                    <Label Text="Reported By: " TextColor="Green"/>
+                    <Label x:Name="FullName"  TextDecorations="Underline" TextColor="Blue"  />
+
+                </StackLayout>
+            </StackLayout>
+
+                <StackLayout Orientation="Horizontal" Padding="10,10,0,5">
+                    <Label Text="Contact Person:  " TextColor="Green"/>
+                    <Label Text="{Binding DiseaseIncident.ContactPerson}"/>
+                    <Label Text="Contact Number:  " TextColor="Green"/>
+                    <Label Text="{Binding DiseaseIncident.ContactNumber}" />
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

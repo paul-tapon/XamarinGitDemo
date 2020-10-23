@@ -12,7 +12,6 @@ using Xamarin.Forms.Xaml;
 
 namespace BAI.Adir.Mobile.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class LoginPage : ContentPage
     {
         public UserProfile userProfile { get; set; }

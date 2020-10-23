@@ -9,6 +9,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
+using System.Security.Cryptography;
 using System.Text;
 using System.Web.Http;
 using WebGrease.Css.Ast.Selectors;
@@ -62,5 +63,6 @@ namespace BAI.Adir.Api.Controllers
                 //return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid Credentials.");
                                       
         }
+
     }
 }
