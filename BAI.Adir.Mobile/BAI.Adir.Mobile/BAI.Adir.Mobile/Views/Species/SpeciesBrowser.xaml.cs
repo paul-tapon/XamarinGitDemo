@@ -17,7 +17,6 @@ namespace BAI.Adir.Mobile.Views.Species
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SpeciesBrowser : ContentPage
     {
-        string apiUrl = "http://192.168.1.223:45455/api";
         public ObservableCollection<Models.Species> Species { get; set; }
         public SpeciesBrowser()
         {
@@ -42,7 +41,7 @@ namespace BAI.Adir.Mobile.Views.Species
             try
             {
 
-                var client = new RestClient(apiUrl);
+                var client = new RestClient(Settings.AdirApiUrl);
                 var request = new RestRequest("species", DataFormat.Json);
                 request.Method = Method.GET;
 
@@ -67,7 +66,7 @@ namespace BAI.Adir.Mobile.Views.Species
         private async void Button_Clicked(object sender, EventArgs e)
         {
             Species.Clear();
-            var client = new RestClient(apiUrl);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("species/filter?value=" + WebUtility.UrlEncode(txtQuery.Text), DataFormat.Json);
             request.Method = Method.GET;
 
@@ -95,7 +94,7 @@ namespace BAI.Adir.Mobile.Views.Species
             txtQuery.Text = null;
             txtQuery.Focus();
 
-            var client = new RestClient(apiUrl);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("species/filter?value=", DataFormat.Json);
             request.Method = Method.GET;
 

@@ -19,7 +19,6 @@ namespace BAI.Adir.Mobile.Views
     {
 
 
-        string apiUrl = "http://192.168.1.235:45457/api/";
         public ChangePassword ChangePassword { get; set; }
         //public UserProfile(LoginResult loginResult)
         private int _appUserId = 0;
@@ -71,7 +70,7 @@ namespace BAI.Adir.Mobile.Views
                     {
 
 
-                        var client = new RestClient(apiUrl);
+                        var client = new RestClient(Settings.AdirApiUrl);
                         var request = new RestRequest("user/" + _appUserId, DataFormat.Json);
 
                         var changepass = new ChangePassword();

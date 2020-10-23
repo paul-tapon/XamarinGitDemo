@@ -15,7 +15,6 @@ namespace BAI.Adir.Mobile.Views.Species
     [QueryProperty(nameof(SpeciesId), nameof(SpeciesId))]
     public partial class SpeciesDetails : ContentPage
     {
-        string apiUrl = "http://192.168.1.223:45455/api";
         public static string animalspecies { get; set; }
         public static string Type { get; set; }
         public static string Common { get; set; }
@@ -55,7 +54,7 @@ namespace BAI.Adir.Mobile.Views.Species
 
         private void GetSpeciesDetails()
         {
-            var client = new RestClient(apiUrl);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("Species/{id}");
             request.AddUrlSegment("id", _speciesId.ToString());
 
@@ -95,7 +94,7 @@ namespace BAI.Adir.Mobile.Views.Species
             else
             {
 
-                var client = new RestClient(apiUrl);
+                var client = new RestClient(Settings.AdirApiUrl);
                 var request = new RestRequest("Species/{id}");
 
                 request.AddUrlSegment("id", _speciesId.ToString());

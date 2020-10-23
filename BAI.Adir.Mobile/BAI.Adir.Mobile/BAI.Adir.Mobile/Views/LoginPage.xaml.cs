@@ -15,7 +15,6 @@ namespace BAI.Adir.Mobile.Views
     public partial class LoginPage : ContentPage
     {
         public UserProfile userProfile { get; set; }
-        string apiUrl = "http://192.168.1.235:45457/api/";
         public LoginPage()
         {
             InitializeComponent();
@@ -24,7 +23,7 @@ namespace BAI.Adir.Mobile.Views
 
         private async void ButtonLogin_Clicked(object sender, EventArgs e)
         {
-            var client = new RestClient(apiUrl);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("security", DataFormat.Json);
 
             var login = new Login();

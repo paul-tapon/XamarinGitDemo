@@ -12,13 +12,12 @@ namespace BAI.Adir.Mobile.ViewModels
 {
     public class RegisterViewModel : BaseViewModel
     {
-        string apiUrl = "https://bai-adir-api.conveyor.cloud/api/";
         //public Command RegisterCommand { get; }
         public Command CancelCommand { get; }
         public Command SaveCommand { get; }
         public RegisterDto RegisterDto { get; set; }
         ////API
-        //string apiUrl = "https://webapidemo-ls8.conveyor.cloud/api/";
+        //string Settings.AdirApiUrl = "https://webapidemo-ls8.conveyor.cloud/api/";
 
         public RegisterViewModel()
         {
@@ -35,7 +34,7 @@ namespace BAI.Adir.Mobile.ViewModels
         {
             //await DisplayAlert("Error", "API not success", "OK");
 
-            var client = new RestClient(apiUrl);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("RegisterAppUser", DataFormat.Json);
             //var context = new AppUser();
 

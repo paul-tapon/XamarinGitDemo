@@ -21,8 +21,6 @@ namespace BAI.Adir.Mobile.Views
 
     public partial class DiseaseIncident : ContentPage
     {
-        string apiURL = "http://10.0.2.2:45455/api/";
-
         App _mainpage = null;
 
         byte[] byteArray = null;
@@ -72,7 +70,7 @@ namespace BAI.Adir.Mobile.Views
 
         private async void Save_Clicked(object sender, EventArgs e)
         {
-            var client = new RestClient(apiURL);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("diseaseincidents", (Method)DataFormat.Json);
 
             var diseaseincident = new Models.DiseaseIncident();
@@ -131,7 +129,7 @@ namespace BAI.Adir.Mobile.Views
 
         public async Task ExecuteLoadRegionCommand()
         {
-            var client = new RestClient(apiURL);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("regions", (Method)DataFormat.Json);
             request.Method = Method.GET;
             var response = await client.ExecuteAsync(request);
@@ -145,7 +143,7 @@ namespace BAI.Adir.Mobile.Views
         {
             try
             {
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 var request = new RestRequest("species", (Method)DataFormat.Json);
                 request.Method = Method.GET;
                 var response = await client.ExecuteAsync(request);
@@ -181,7 +179,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 var province = ProvinceSelect.SelectedItem as Province;
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 //IsBusy = true;
                 var request = new RestRequest("Municipalities/GetMunicipalitiesByProvinceId?id=" + WebUtility.UrlEncode(province.ProvinceId.ToString()), DataFormat.Json);
 
@@ -209,7 +207,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 var Municipalities = MunicipalitySelect.SelectedItem as Municipalities;
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 //IsBusy = true;
                 var request = new RestRequest("Barangays/GetBarangaysByMunicipalitiesId?id=" + WebUtility.UrlEncode(Municipalities.MunicipalityId.ToString()), DataFormat.Json);
                 request.Method = Method.GET;
@@ -239,7 +237,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 var region = RegionSelect.SelectedItem as Region;
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 //IsBusy = true;
                 var request = new RestRequest("provinces/GetProvinceByRegionId?id=" + WebUtility.UrlEncode(region.RegionId.ToString()), DataFormat.Json);
 

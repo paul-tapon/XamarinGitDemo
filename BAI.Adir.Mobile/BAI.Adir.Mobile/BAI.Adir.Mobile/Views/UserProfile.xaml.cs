@@ -19,9 +19,7 @@ namespace BAI.Adir.Mobile.Views
     
 
     public partial class UserProfile : ContentPage
-
     {
-        string apiUrl = "http://192.168.1.235:45457/api/";
         public LoginResult LoginResult { get; set; }
         //public UserProfile(LoginResult loginResult)
         private int _appUserId = 0;
@@ -61,7 +59,7 @@ namespace BAI.Adir.Mobile.Views
         public async void getUserProfile(int id)
         {
 
-            var client = new RestClient(apiUrl);
+            var client = new RestClient(Settings.AdirApiUrl);
             var request = new RestRequest("user/{id}", DataFormat.Json);
 
             //var login = new Login();
@@ -106,7 +104,7 @@ namespace BAI.Adir.Mobile.Views
         //    {
 
         //        //code to call API
-        //        var client = new RestClient(apiUrl);
+        //        var client = new RestClient(Settings.AdirApiUrl);
         //        var request = new RestRequest("User/"+_appUserId.ToString(), DataFormat.Json);
         //        request.Method = Method.GET;
 

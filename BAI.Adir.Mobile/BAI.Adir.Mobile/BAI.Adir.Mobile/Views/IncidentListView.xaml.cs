@@ -16,12 +16,6 @@ namespace BAI.Adir.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IncidentListView : ContentPage
     {
-        //[QueryProperty(nameof(), nameof(DiseaseIncidentId))]
-        string apiURL = "http://10.0.2.2:45456/api";
-
- 
-
-       
         public Models.DiseaseIncident DiseaseIncident { get; set; }
         public IncidentListView(Models.DiseaseIncident diseaseIncident)
         {

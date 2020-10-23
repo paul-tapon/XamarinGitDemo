@@ -10,12 +10,11 @@ namespace BAI.Adir.Mobile.Services
 {
     internal class APIServices
     {
-        private const string apiURL = "http://10.0.2.2:45455/";
 
         public async Task<List<SpeciesDTO>> GetSpecies()
         {
             var client = new HttpClient();
-            var json = await client.GetStringAsync(apiURL + "api/species");
+            var json = await client.GetStringAsync(Settings.AdirApiUrl + "api/species");
             var species = JsonConvert.DeserializeObject<List<SpeciesDTO>>(json);
             return species;
         }

@@ -233,10 +233,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helper\EncryptionHelper.cs" />
-    <Compile Include="Migrations\202010201002489_InitialDB.cs" />
-    <Compile Include="Migrations\202010201002489_InitialDB.Designer.cs">
-      <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DTO\ChangePasswordDto.cs" />
     <Compile Include="Models\DTO\LoginDto.cs" />
@@ -365,12 +361,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\202010201002489_InitialDB.resx">
-      <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="obj\Debug\BAI.Adir.Api.Migrations.InitialDB.resources" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

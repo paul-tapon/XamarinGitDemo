@@ -17,7 +17,6 @@ namespace BAI.Adir.Mobile.Views
 {
     public partial class RegisterPage : ContentPage
     {
-        string apiUrl = "https://bai-adir-api.conveyor.cloud/api/";
         public RegisterDto registerDto { get; set; }
         bool _isSaving { get; set; }
         RegisterViewModel viewModel = null;
@@ -102,7 +101,7 @@ namespace BAI.Adir.Mobile.Views
             //    isSavingForm(_isSaving);
             //    return;
             //}
-            //var client = new RestClient(apiUrl);
+            //var client = new RestClient(Settings.AdirApiUrl);
             //var request = new RestRequest("appUsers", DataFormat.Json);
             //var context = new AppUser();
 

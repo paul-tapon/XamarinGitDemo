@@ -18,8 +18,6 @@ namespace BAI.Adir.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IncidentList : ContentPage
     {
-        string apiURL = "http://10.0.2.2:45456/api";
-
         public ObservableCollection<DiseaseIncident> DiseaseIncidents { get; set; }
 
 
@@ -60,7 +58,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 DiseaseIncidents.Clear();
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 var request = new RestRequest("DiseaseIncident", DataFormat.Json);
                 request.Method = Method.GET;
 
@@ -83,7 +81,7 @@ namespace BAI.Adir.Mobile.Views
         }
         private async void filter()
         {
-            var client = new RestClient(apiURL);
+            var client = new RestClient(Settings.AdirApiUrl);
             
             
 
@@ -175,7 +173,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 var request = new RestRequest("Regions", DataFormat.Json);
                 request.Method = Method.GET;
 
@@ -205,7 +203,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 var region = Region.SelectedItem as Region;
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 //IsBusy = true;
                 var request = new RestRequest("provinces/GetProvinceByRegionId?id=" + WebUtility.UrlEncode(region.RegionId.ToString()), DataFormat.Json);
 
@@ -236,7 +234,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
                 var province = Province.SelectedItem as Province;
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 //IsBusy = true;
                 var request = new RestRequest("Municipalities/GetMunicipalitiesByProvinceId?id=" + WebUtility.UrlEncode(province.ProvinceId.ToString()), DataFormat.Json);
 
@@ -270,7 +268,7 @@ namespace BAI.Adir.Mobile.Views
             try
             {
 
-                var client = new RestClient(apiURL);
+                var client = new RestClient(Settings.AdirApiUrl);
                 var request = new RestRequest("Species", DataFormat.Json);
                 request.Method = Method.GET;
 
