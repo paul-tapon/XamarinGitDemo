@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using BAI.Adir.Mobile.ViewModels;
 using BAI.Adir.Mobile.Views;
+using BAI.Adir.Mobile.Views.Species;
 using Xamarin.Forms;
 
 namespace BAI.Adir.Mobile
@@ -17,6 +18,7 @@ namespace BAI.Adir.Mobile
             //.RegisterRoute(nameof(UserProfile), typeof(UserProfile));
             //Routing.RegisterRoute(nameof(ChangePasswordPage), typeof(ChangePasswordPage));
 
+            Routing.RegisterRoute(nameof(SpeciesDetails), typeof(SpeciesDetails));
         }
 
         private async void OnMenuItemClicked(object sender, EventArgs e)

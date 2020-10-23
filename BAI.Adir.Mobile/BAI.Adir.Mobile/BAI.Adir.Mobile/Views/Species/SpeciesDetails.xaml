@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.Species.SpeciesDetails">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <StackLayout Padding="15" Spacing="10">
+
+                    <Label Text="Animal Species" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry x:Name="TextName" Text="{Binding Species.Name}" IsReadOnly="{Binding FieldsAreReadOnly}" FontSize="Medium" TextColor="Black" />
+
+                        <Label Text="Type" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry  x:Name="TextType" Text="{Binding Species.Type}" IsReadOnly="{Binding FieldsAreReadOnly}" FontSize="Medium" TextColor="Black"/>
+
+                            <Label Text="Common Disease/s" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Editor x:Name="TextDisease" Text="{Binding Species.CommonDiseases}" IsReadOnly="{Binding FieldsAreReadOnly}" FontSize="Medium" TextColor="black"/>
+
+                                <Label Text="Record Status" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                                <CheckBox x:Name="Status" IsChecked="{Binding Species.IsActive}" IsEnabled="False"/>
+
+                    <Label x:Name="LCreatedby" Text="Created by" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry x:Name="Createdby" Text="{Binding Species.CreatedByAppUser}" IsReadOnly="{Binding FieldsAreReadOnly}" FontSize="Medium" TextColor="black"/>
+
+                    <Label x:Name="LCreatedon" Text="Created on" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry x:Name="Createdon" Text="{Binding Species.CreatedOn}" IsReadOnly="{Binding FieldsAreReadOnly}" FontSize="Medium" TextColor="black"/>
+
+                    <Label  x:Name="LModifiedby" Text="Modified by" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry x:Name="Modifiedby" Text="{Binding Species.ModifiedByAppUser}" IsReadOnly="{Binding FieldsAreReadOnly}" FontSize="Medium" TextColor="black"/>
+
+                    <Label  x:Name="LModifiedon" Text="Modified on" FontSize="Medium" FontAttributes="Bold" TextColor="Black"/>
+                    <Entry x:Name="Modifiedon" Text="{Binding Species.ModifiedOn}" IsReadOnly="{Binding FieldsAreReadOnly}"  FontSize="Medium" TextColor="Black"/>
+                </StackLayout>
+                <Button x:Name="ButtonEdit" Text="Edit" Clicked="ButtonEdit_Clicked" />
+                <Button x:Name="ButtonSave" Text="Save" Clicked="ButtonSave_Clicked" IsVisible="False"/>
+                <Button x:Name="ButtonCancel" Text="Cancel" Clicked="ButtonCancel_Clicked" IsVisible="False"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
