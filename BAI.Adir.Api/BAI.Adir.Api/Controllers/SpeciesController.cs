@@ -21,8 +21,7 @@ namespace BAI.Adir.Api.Controllers
         // GET: api/Species
         public List<Species> GetSpecies()
         {
-            return db.Species.OrderBy(p=>p.Name);
-           
+            return db.Species.OrderBy(p=>p.Name).ToList();
         }
 
         // GET: api/Species/5

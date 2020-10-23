@@ -28,7 +28,7 @@ namespace BAI.Adir.Mobile.Views
 
         public ObservableCollection<Municipality> Municipalities { get; set; }
 
-        public ObservableCollection<Species> Speciess { get; set; }
+        public ObservableCollection<Models.Species> Speciess { get; set; }
 
        
         public IncidentList()
@@ -98,7 +98,7 @@ namespace BAI.Adir.Mobile.Views
                 var region = Region.SelectedItem as Region;
                 var province = Province.SelectedItem as Province;
                 var mun = Municipality.SelectedItem as Municipality;
-                var species = SpeciesKind.SelectedItem as Species;
+                var species = SpeciesKind.SelectedItem as Models.Species;
                 int regionid;
                 int provinceid;
                 int munid;
@@ -275,7 +275,7 @@ namespace BAI.Adir.Mobile.Views
                 request.Method = Method.GET;
 
                 var response = await client.ExecuteAsync(request);
-                var responseData = JsonConvert.DeserializeObject<List<Species>>(response.Content);
+                var responseData = JsonConvert.DeserializeObject<List<Models.Species>>(response.Content);
                 SpeciesKind.ItemsSource = responseData;
                 /*foreach (var region in responseData)
                 {
