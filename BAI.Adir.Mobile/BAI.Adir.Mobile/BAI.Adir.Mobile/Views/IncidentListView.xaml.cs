@@ -22,8 +22,8 @@ namespace BAI.Adir.Mobile.Views
  
 
        
-        public DiseaseIncident DiseaseIncident { get; set; }
-        public IncidentListView(DiseaseIncident diseaseIncident)
+        public Models.DiseaseIncident DiseaseIncident { get; set; }
+        public IncidentListView(Models.DiseaseIncident diseaseIncident)
         {
             InitializeComponent();
             DiseaseIncident = diseaseIncident;

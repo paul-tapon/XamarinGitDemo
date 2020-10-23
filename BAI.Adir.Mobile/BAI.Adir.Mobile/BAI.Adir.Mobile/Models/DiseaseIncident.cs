@@ -55,6 +55,8 @@ namespace BAI.Adir.Mobile.Models
             get; set;
         }
 
+        public int SpeciesId { get; set; }
+
         public Species Species { get; set; }
 
         public string SpeciesName

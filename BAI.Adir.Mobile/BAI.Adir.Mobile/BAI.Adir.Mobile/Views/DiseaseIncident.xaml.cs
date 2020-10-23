@@ -75,7 +75,7 @@ namespace BAI.Adir.Mobile.Views
             var client = new RestClient(apiURL);
             var request = new RestRequest("diseaseincidents", (Method)DataFormat.Json);
 
-            var diseaseincident = new DiseaseIncidentDTO();
+            var diseaseincident = new Models.DiseaseIncident();
             var DiseaseIncidentViewModel = new DiseaseIncidentViewModel();
 
             diseaseincident.ReportedByFirstname = FirstName.Text;
@@ -101,18 +101,18 @@ namespace BAI.Adir.Mobile.Views
 
             // diseaseincident.SpeciesId = DiseaseIncidentViewModel.SelectedSpecies.SpeciesId;
 
-            var spcs = BarangaySelect.SelectedItem as Barangay;
+            var spcs = SpeciesSelect.SelectedItem as Models.Species;
 
-            diseaseincident.SpeciesId = (int)spcs.BarangayId;
+            diseaseincident.SpeciesId = (int)spcs.SpeciesId;
 
-            diseaseincident.IsActive = true;
-            diseaseincident.CreatedByAppUserId = 1;
-            diseaseincident.CreatedOn = DateTime.Now;
+            //diseaseincident.IsActive = true;
+            //diseaseincident.CreatedByAppUserId = 1;
+            //diseaseincident.CreatedOn = DateTime.Now;
             request.Method = Method.POST;
             request.AddJsonBody(diseaseincident);
             var response = await client.ExecuteAsync(request);
 
-            var productData = JsonConvert.DeserializeObject<DiseaseIncidentDTO>(response.Content);
+            var productData = JsonConvert.DeserializeObject<DiseaseIncident>(response.Content);
 
             if (response.StatusCode == System.Net.HttpStatusCode.Created)
             {
