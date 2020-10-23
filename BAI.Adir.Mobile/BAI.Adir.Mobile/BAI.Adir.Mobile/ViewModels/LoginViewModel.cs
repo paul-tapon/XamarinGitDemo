@@ -2,7 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.IO;
 using Xamarin.Forms;
+using Newtonsoft.Json;
+
+using RestSharp;
+using BAI.Adir.Mobile.Models;
+using System.Threading.Tasks;
+using Xamarin.Forms.Xaml;
 
 namespace BAI.Adir.Mobile.ViewModels
 {
@@ -18,7 +25,11 @@ namespace BAI.Adir.Mobile.ViewModels
         private async void OnLoginClicked(object obj)
         {
             // Prefixing with `//` switches to a different navigation stack instead of pushing to the active one
-            await Shell.Current.GoToAsync($"//{nameof(AboutPage)}");
+            
+
+            //
+            
+
         }
     }
 }
