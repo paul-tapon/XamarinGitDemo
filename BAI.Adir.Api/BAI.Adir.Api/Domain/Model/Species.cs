@@ -9,7 +9,7 @@ namespace BAI.Adir.Api.Domain.Model
         [Key]
         public int SpeciesId { get; set; }
         public string Name { get; set; }
- 
-
-    }
+        public string Type { get; set; }
+        public string CommonDiseases { get; set; }
+            }
 }

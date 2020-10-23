@@ -26,7 +26,7 @@ namespace BAI.Adir.Api.Controllers
 
         // GET: api/Provinces
         [Route("GetProvinceByRegionId")]
-        [HttpGet]
+      //  [HttpGet]
         public IHttpActionResult GetProvinceByRegionId(int id)
         {
             return Ok(db.Provinces.Where(p=>p.RegionId == id).ToList());
