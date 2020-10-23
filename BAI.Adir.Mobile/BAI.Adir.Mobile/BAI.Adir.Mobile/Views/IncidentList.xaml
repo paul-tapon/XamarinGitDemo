@@ -69,7 +69,7 @@
                 </Picker>
 
                 <Button x:Name="btnSearch" Text="Search" Clicked="btnSearch_Clicked"/>
-                <Button x:Name="btnExport" Text="Export" Clicked="btnExport_Clicked"/>
+                <Button x:Name="btnReset" Text="Reset" Clicked="btnReset_Clicked"/>
 
             </StackLayout>
             <!--<StackLayout Orientation="Horizontal">
@@ -86,31 +86,35 @@
                                 <StackLayout >
                                     <StackLayout Orientation="Horizontal" Margin="0" Padding="1,0,0,1" HorizontalOptions="FillAndExpand">
                                         <StackLayout>
-                                            <Label Text="Infected" FontSize="Medium" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>
-                                            <Label Text="{Binding NumberOfInfected}" FontSize="Medium" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="Species" FontSize="Small" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding SpeciesName}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
                                         <StackLayout>
-                                            <Label Text="Deaths" FontSize="Medium" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
-                                            <Label Text="{Binding NumberOfDeaths}" FontSize="Medium" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="Infected" FontSize="Small" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding NumberOfInfected}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
                                         <StackLayout>
-                                            <Label Text="Population" FontSize="Medium" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
-                                            <Label Text="{Binding Population}" FontSize="Medium" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="Deaths" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding NumberOfDeaths}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label Text="Population" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding Population}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
 
 
 
                                     </StackLayout>
                                     <StackLayout Padding="30,0,0,0" Margin="0">
-                                        <Label Text="Symptoms" FontSize="Medium" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0" />
-                                        <Label Text="{Binding Symptoms}" FontSize="Medium" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0" />
+                                        <Label Text="Symptoms" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0" />
+                                        <Label Text="{Binding Symptoms}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0" />
 
                                     </StackLayout>
                                     <StackLayout>
 
                                         <StackLayout Padding="30,0,0,0" Margin="0">
-                                            <Label Text="Address" FontSize="Medium" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0" />
-                                            <Label Text="{Binding FullAddress}" FontSize="Medium" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0" />
+                                            <Label Text="Address" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0" />
+                                            <Label Text="{Binding FullAddress}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0" />
 
                                         </StackLayout>
                                     </StackLayout>
@@ -120,10 +124,10 @@
 
                                         <StackLayout Padding="30,0,0,0">
 
-                                        <Label Text="Reported by" FontSize="Medium" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0"/>
+                                        <Label Text="Reported by" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0"/>
                                         <StackLayout Orientation="Horizontal" Margin="0" >
-                                            <Label Text="{Binding ReportedByFirstname}" FontSize="Medium" TextColor="Black" Margin="0"/>
-                                        <Label Text="{Binding ReportedByLastname}" FontSize="Medium" TextColor="Black" Margin="0"/>
+                                            <Label Text="{Binding ReportedByFirstname}" FontSize="Small" TextColor="Black" Margin="0"/>
+                                        <Label Text="{Binding ReportedByLastname}" FontSize="Small" TextColor="Black" Margin="0"/>
                                             <!--<Label Text="-" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>-->
                                             <!--<Label Text="{Binding price, StringFormat='{0:C}'}" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>-->
 

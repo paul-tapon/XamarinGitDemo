@@ -308,5 +308,16 @@ namespace BAI.Adir.Mobile.Views
             await Navigation.PushAsync(new IncidentListView(incidentlist));
 
         }
+
+        private void btnReset_Clicked(object sender, EventArgs e)
+        {
+            Region.SelectedIndex = -1;
+            Province.SelectedIndex = -1;
+            Municipality.SelectedIndex = -1;
+            SpeciesKind.SelectedIndex = -1;
+            SummaryIncident.IsRefreshing = false;
+            ExecuteLoadDiseaseIncidentCommand();
+
+        }
     }
 }
