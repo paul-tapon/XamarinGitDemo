@@ -1,4 +1,5 @@
 ﻿using BAI.Adir.Api.Domain.Context;
+using BAI.Adir.Api.Helper;
 using BAI.Adir.Api.Models.DTO;
 using Microsoft.IdentityModel.Tokens;
 using System;
@@ -24,34 +25,41 @@ namespace BAI.Adir.Api.Controllers
         {
             var context = new AdirContext();
 
-
-            var user = context.AppUsers.FirstOrDefault(e => e.Username == login.Username && e.PasswordHash == login.Password);
+            
+            var user = context.AppUsers.FirstOrDefault(e => e.Username == login.Username);
 
             if (user != null)
             {
-                string secretKey = ConfigurationManager.AppSettings["JwtSecretKey"];
+                if (EncryptionHelper.CheckPassword(login.Password, user.PasswordHash, user.PasswordSalt))
+                {
 
-                var issuer = "http://codebiz.com.ph";
+                    string secretKey = ConfigurationManager.AppSettings["JwtSecretKey"];
 
-                var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
-                var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
+                    var issuer = "http://codebiz.com.ph";
 
-                //Create a List of Claims, Keep claims name short    
-                var permClaims = new List<Claim>();
-                permClaims.Add(new Claim(JwtRegisteredClaimNames.NameId, "1"));
-                permClaims.Add(new Claim(JwtRegisteredClaimNames.UniqueName, "bai.admin"));
+                    var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secretKey));
+                    var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
-                //Create Security Token object by giving required parameters    
-                var token = new JwtSecurityToken(issuer, //Issure    
-                                issuer,  //Audience    
-                                permClaims,
-                                expires: DateTime.Now.AddDays(1),
-                                signingCredentials: credentials);
-                var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
-                var result = new { token = jwt_token, appuserid = user.AppUserId, fullname = user.FullName};
-                
-                return Request.CreateResponse(HttpStatusCode.OK, result);
+                    //Create a List of Claims, Keep claims name short    
+                    var permClaims = new List<Claim>();
+                    permClaims.Add(new Claim(JwtRegisteredClaimNames.NameId, "1"));
+                    permClaims.Add(new Claim(JwtRegisteredClaimNames.UniqueName, "bai.admin"));
 
+                    //Create Security Token object by giving required parameters    
+                    var token = new JwtSecurityToken(issuer, //Issure    
+                                    issuer,  //Audience    
+                                    permClaims,
+                                    expires: DateTime.Now.AddDays(1),
+                                    signingCredentials: credentials);
+                    var jwt_token = new JwtSecurityTokenHandler().WriteToken(token);
+                    var result = new { token = jwt_token, appuserid = user.AppUserId, fullname = user.FullName };
+
+                    return Request.CreateResponse(HttpStatusCode.OK, result);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "Invalid Credentials.");
+                }
 
             }
             else

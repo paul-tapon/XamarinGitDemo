@@ -237,8 +237,8 @@
     <Compile Include="Migrations\202010201002489_InitialDB.designer.cs">
       <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
     </Compile>
-
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DTO\ChangePasswordDto.cs" />
     <Compile Include="Models\DTO\LoginDto.cs" />
     <Compile Include="obj\Debug\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Models\DTO\RegisterDto.cs" />
