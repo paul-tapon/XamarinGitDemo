@@ -17,14 +17,7 @@
         <ResourceDictionary>
             <Style x:Key="BaseStyle" TargetType="Element">
                 <Setter Property="Shell.BackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.ForegroundColor" Value="White" />
-                <Setter Property="Shell.TitleColor" Value="White" />
-                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
-                <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
-                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource Primary}" />
-                <Setter Property="Shell.TabBarForegroundColor" Value="White"/>
-                <Setter Property="Shell.TabBarUnselectedColor" Value="#95FFFFFF"/>
-                <Setter Property="Shell.TabBarTitleColor" Value="White"/>
+
             </Style>
             <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
             <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
@@ -90,6 +83,7 @@
         <ShellContent Title="ChangePassword" Icon="tab_feed.png" Route="ChangePasswordPage" ContentTemplate="{DataTemplate local:ChangePasswordPage}" />
         <ShellContent Title="Incident List" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:IncidentList}" />
         <ShellContent Title="Species" Icon="tab_carabao.png" Route="SpeciesBrowser" ContentTemplate="{DataTemplate local:Species.SpeciesBrowser}" />
+        <ShellContent Title="Disease Incident" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:DiseaseIncident}" />
 
     </FlyoutItem>
 

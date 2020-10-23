@@ -234,7 +234,7 @@
     </Compile>
     <Compile Include="Helper\EncryptionHelper.cs" />
     <Compile Include="Migrations\202010201002489_InitialDB.cs" />
-    <Compile Include="Migrations\202010201002489_InitialDB.designer.cs">
+    <Compile Include="Migrations\202010201002489_InitialDB.Designer.cs">
       <DependentUpon>202010201002489_InitialDB.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />

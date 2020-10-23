@@ -6,8 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
-
+using System.Web.Http.Description;
 
 namespace BAI.Adir.Api.Controllers
 {
@@ -60,5 +59,24 @@ namespace BAI.Adir.Api.Controllers
                 return Ok(data);
             }
         }
+
+        [ResponseType(typeof(DiseaseIncident))]
+        public IHttpActionResult PostDiseaseIncident(DiseaseIncident diseaseIncident)
+        {
+            var context = new AdirContext();
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            context.DiseaseIncidents.Add(diseaseIncident);
+            context.SaveChanges();
+
+            return CreatedAtRoute("DefaultApi", new { id = diseaseIncident.DiseaseIncidentId }, diseaseIncident);
+        }
+
     }
+
+
 }

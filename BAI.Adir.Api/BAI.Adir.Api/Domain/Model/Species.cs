@@ -4,7 +4,7 @@ using System.Web;
 
 namespace BAI.Adir.Api.Domain.Model
 {
-    public class Species :ModelBase
+    public class Species : ModelBase
     {
         [Key]
         public int SpeciesId { get; set; }

@@ -302,7 +302,7 @@ namespace BAI.Adir.Mobile.Views
 
         public async void SummaryIncident_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            var incidentlist = e.Item as DiseaseIncident;
+            var incidentlist = e.Item as Models.DiseaseIncident;
            //await Shell.Current.GoToAsync("IncidentListView?DiseaseIncidentId=" + incidentlist.DiseaseIncidentId);
 
             await Navigation.PushAsync(new IncidentListView(incidentlist));
