@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:maps="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             x:Class="BAI.Adir.Mobile.Views.DiseaseIncident"
+             xmlns:vm="clr-namespace:BAI.Adir.Mobile.ViewModels" >
+    <ContentPage.BindingContext>
+        <vm:DiseaseIncidentViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        
+            <StackLayout>
+                <Label Text="Disease Incident Data Entry Form" FontSize="Title"/>
+                <Label Text="Please Fill up the Following" />
+                <ScrollView>
+
+                    <StackLayout>
+
+
+                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="22*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="76*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="Client.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+                            <Entry x:Name="FirstName" Placeholder="First Name" Grid.Row="0" Grid.Column="2" VerticalOptions="Center" Text="{Binding DiseaseIncidentDTO.ReporttedByFirstName}"/>
+                            <Entry x:Name="MiddleName" Placeholder="Middle Name" Grid.Row="1" Grid.Column="2" VerticalOptions="Center" Text="{Binding DiseaseIncidentDTO.ReportedByMiddleName}"/>
+                            <Entry x:Name="LastName" Placeholder="Last Name" Grid.Row="2" Grid.Column="2" VerticalOptions="Center" Text="{Binding DiseaseIncidentDTO.ReportedByLastName}"/>
+                            <Entry x:Name="ExtensionName" Placeholder="Extension Name" Grid.Row="3" Grid.Column="2"   VerticalOptions="Center" Text="{Binding DiseaseIncidentDTO.ReportedBySuffixName}"/>
+
+                        </Grid>
+
+                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="Auto"/>
+                             
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="22*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="76*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="ContactPerson.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Entry x:Name="ContactPerson" Placeholder="Contact Person" Grid.Row="0" Grid.Column="2"  Grid.ColumnSpan="5" VerticalOptions="Center" Text="{Binding DiseaseIncidentDTO.ContactPerson}"/>
+                        <Entry x:Name="ContactNumber" Placeholder="Contact Number" Grid.Row="1" Grid.Column="2"  Grid.ColumnSpan="5" VerticalOptions="Center" Text="{Binding DiseaseIncidentDTO.ContactNumber}"/>
+                        </Grid>
+                        
+                        <Grid VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                                <RowDefinition Height="50"/>
+                            </Grid.RowDefinitions>
+
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="22*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="76*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Image Source="Swine.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+                            <Label Text="Symptoms Start" Grid.Row="0" Grid.Column="2" FontSize="Medium" TextColor="Gray" Margin="5,5"/>
+                        <DatePicker x:Name="Symptoms" Grid.Row="1" Grid.Column="2" TextColor="Gray" />
+
+                        <Label Text="Date of Animal Died" Grid.Row="2" Grid.Column="2" FontSize="Medium" TextColor="Gray" Margin="5,5" />
+                        <DatePicker x:Name="AnimalDied" Grid.Row="3" Grid.Column="2" TextColor="Gray" />
+
+                        </Grid>
+                    <Picker x:Name="SpeciesSelect" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding Species}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="Species_SelectedIndexChanged" Title="Select Species"/>
+
+                    <Grid x:Name="StatusGrid" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="50"/>
+
+                            </Grid.RowDefinitions>
+                            
+                            <Grid.ColumnDefinitions >
+                                <ColumnDefinition Width="33.3*"/>
+                                <ColumnDefinition Width="33.3*"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                        <Entry x:Name="Infected" Grid.Row="0" Grid.Column="0" Keyboard="Numeric" Placeholder="No. Infected" PlaceholderColor="Gray" Text="{Binding DiseaseIncidentDTO.NumberOfInfected}"/>
+                        <Entry x:Name="Deaths" Grid.Row="0" Grid.Column="1"  Keyboard="Numeric" Placeholder="No. Deaths" PlaceholderColor="Gray" Text="{Binding DiseaseIncidentDTO.NumberOfDeaths}"/>
+                        <Entry x:Name="Population" Grid.Row="0" Grid.Column="2" Keyboard="Numeric" Placeholder="Total Population" PlaceholderColor="Gray" Text="{Binding DiseaseIncidentDTO.Population}"/>
+                        </Grid>
+
+                    <Editor x:Name="WhatSymptoms" Grid.Row="1" Placeholder="What are the symptoms" PlaceholderColor="Gray" HeightRequest="70" Text="{Binding DiseaseIncidentDTO.Symptoms}"/>
+                    <Editor x:Name="Remarks" Grid.Row="2" Placeholder="Remarks" PlaceholderColor="Gray" HeightRequest="70" Text="{Binding DiseaseIncidentDTO.Notes}"/>
+
+
+
+                    <Grid x:Name="Location" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand" ColumnSpacing="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                            <RowDefinition Height="50"/>
+                        </Grid.RowDefinitions>
+
+                        <Grid.ColumnDefinitions >
+                            <ColumnDefinition Width="22*"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="76*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Image Source="LocationPin.png" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
+                        <Picker x:Name="RegionSelect" Grid.Row="0" Grid.Column="2" Title="Select Region" ItemsSource="{Binding Regions}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="RegionSelect_SelectedIndexChanged_1"/>
+                        <Picker x:Name="ProvinceSelect" Grid.Row="1" Grid.Column="2" Title="Select Province" ItemsSource="{Binding Provinces}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="ProvinceSelect_SelectedIndexChanged"/>
+                        <Picker x:Name="MunicipalitySelect" Grid.Row="2" Grid.Column="2" Title="Select Municipality" ItemsSource="{Binding Municipalities}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="MunicipalitySelect_SelectedIndexChanged"/>
+                        <Picker x:Name="BarangaySelect" Grid.Row="3" Grid.Column="2" Title="Select Barangay" ItemsSource="{Binding Barangays}" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="BarangaySelect_SelectedIndexChanged"/>
+
+                        <!--<Picker x:Name="SpeciesSelect" Grid.Row="4" Grid.Column="2" ItemsSource="{Binding Species}" ItemDisplayBinding="{Binding Name}" SelectedItem="{Binding SelectedSpecies, Mode=TwoWay}" SelectedIndexChanged="Species_SelectedIndexChanged" Title="Select Species"/>-->
+
+                    </Grid>
+                    
+                    <!--<Button x:Name="Generate" Text="Generate Coordinates" Clicked="Generate_Clicked" HorizontalOptions="Center"/>-->
+
+
+                    <Entry x:Name="Longitude"  IsEnabled="False" Placeholder="Longitude" PlaceholderColor="Gray" Text="{Binding DiseaseIncidentDTO.Latitude}"/>
+                    <Entry x:Name="Latitude"  IsEnabled="False" Placeholder="Latitude" PlaceholderColor="Gray" Text="{Binding DiseaseIncidentDTO.Longitude}"/>
+                    <maps:Map WidthRequest="320" HeightRequest="350" x:Name="MyMap" IsShowingUser="True" MapType="Street" />
+                    <!--<Button x:Name="PhotoBrowse" Text="Take a Photo" Clicked="PhotoBrowse_Clicked" HorizontalOptions="Center"/>-->
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+
+                        <Button x:Name="Save" Text="Save" Clicked="Save_Clicked" HorizontalOptions="Center"/>
+                        <Button x:Name="Cancel" Text="Cancel" Clicked="Cancel_Clicked" HorizontalOptions="Center"/>
+                    </StackLayout>  
+                  
+                </StackLayout>    
+                </ScrollView>
+            </StackLayout>
+
+       
+       
+
+    </ContentPage.Content>
+</ContentPage>

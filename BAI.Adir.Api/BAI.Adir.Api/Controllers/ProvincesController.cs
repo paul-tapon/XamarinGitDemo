@@ -13,15 +13,15 @@ using BAI.Adir.Api.Domain.Model;
 
 namespace BAI.Adir.Api.Controllers
 {
-    [RoutePrefix("provinces")]
+    [RoutePrefix("api/provinces")]
     public class ProvincesController : ApiController
     {
         private AdirContext db = new AdirContext();
 
         // GET: api/Provinces
-        public IQueryable<Province> GetProvinces()
+        public List<Province> GetProvinces()
         {
-            return db.Provinces;
+            return db.Provinces.ToList();
         }
 
         // GET: api/Provinces
@@ -29,7 +29,7 @@ namespace BAI.Adir.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetProvinceByRegionId(int id)
         {
-            return Ok(db.Provinces.Where(p=>p.RegionId == id));
+            return Ok(db.Provinces.Where(p=>p.RegionId == id).ToList());
         }
 
         // GET: api/Provinces/5

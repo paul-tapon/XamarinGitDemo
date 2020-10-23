@@ -1,12 +1,11 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
+using System.Collections.Generic;
+using System.Text;
 
-namespace BAI.Adir.Api.Domain.Model
+namespace BAI.Adir.Mobile.Models
 {
-    public class DiseaseIncident : ModelBase
+    public class DiseaseIncidentDTO
     {
-        [Key]
         public int DiseaseIncidentId { get; set; }
 
         public string ReportedByFirstname { get; set; }
@@ -43,17 +42,23 @@ namespace BAI.Adir.Api.Domain.Model
         public string Notes { get; set; }
 
         //location
-        [ForeignKey("Barangay")]
+       
         public int BarangayId { get; set; }
-        public Barangay Barangay { get; set; }
+        public  string Barangay { get; set; }
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }
 
-        [ForeignKey("Species")]
+       
         public int SpeciesId { get; set; }
 
-        public Species Species { get; set; }
+        public String Species { get; set; }
         public string Name { get; set; }
+        public Boolean IsActive { get; set; }
+        public int? CreatedByAppUserId { get; set; }
+        public DateTime? CreatedOn { get; set; }
+        public string ModifiedByUserId { get; set; }
+        public DateTime? ModifiedOn { get; set; }
+
     }
 }

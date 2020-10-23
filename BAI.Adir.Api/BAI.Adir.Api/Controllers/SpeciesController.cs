@@ -18,9 +18,13 @@ namespace BAI.Adir.Api.Controllers
         private AdirContext db = new AdirContext();
 
         // GET: api/Species
-        public IQueryable<Species> GetSpecies()
+        //public IQueryable<Species> GetSpecies()
+        //{
+        //    return db.Species;
+        //}        
+        public List<Species> GetSpecies()
         {
-            return db.Species;
+            return db.Species.ToList();
         }
 
         // GET: api/Species/5

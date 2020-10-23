@@ -13,22 +13,22 @@ using BAI.Adir.Api.Domain.Model;
 
 namespace BAI.Adir.Api.Controllers
 {
-    [RoutePrefix("Barangays")]
+    [RoutePrefix("api/Barangays")]
     public class BarangaysController : ApiController
     {
         private AdirContext db = new AdirContext();
 
         // GET: api/Barangays
-        public IQueryable<Barangay> GetBarangays()
+        public List<Barangay> GetBarangays()
         {
-            return db.Barangays;
+            return db.Barangays.ToList();
         }
 
-        [Route("GetBarangaysByMunicipalityId")]
+        [Route("GetBarangaysByMunicipalitiesId")]
         [HttpGet]
         public IHttpActionResult GetBarangaysByMunicipalityId(int id)
         {
-            return Ok(db.Barangays.Where(p => p.MunicipalityId == id));
+            return Ok(db.Barangays.Where(p => p.MunicipalityId == id).ToList());
         }
 
         // GET: api/Barangays/5

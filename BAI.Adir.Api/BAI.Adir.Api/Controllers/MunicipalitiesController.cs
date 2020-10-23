@@ -13,15 +13,15 @@ using BAI.Adir.Api.Domain.Model;
 
 namespace BAI.Adir.Api.Controllers
 {
-    [RoutePrefix("Municipalities")]
+    [RoutePrefix("api/Municipalities")]
     public class MunicipalitiesController : ApiController
     {
         private AdirContext db = new AdirContext();
 
         // GET: api/Municipalities
-        public IQueryable<Municipality> GetMunicipalities()
+        public List<Municipality> GetMunicipalities()
         {
-            return db.Municipalities;
+            return db.Municipalities.ToList();
         }
 
 
@@ -29,7 +29,7 @@ namespace BAI.Adir.Api.Controllers
         [HttpGet]
         public IHttpActionResult GetMunicipalitiesByProvinceId(int id)
         {
-            return Ok(db.Municipalities.Where(p => p.ProvinceId == id));
+            return Ok(db.Municipalities.Where(p => p.ProvinceId == id).ToList());
         }
 
         // GET: api/Municipalities/5

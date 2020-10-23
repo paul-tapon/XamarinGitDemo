@@ -18,9 +18,9 @@ namespace BAI.Adir.Api.Controllers
         private AdirContext db = new AdirContext();
 
         // GET: api/Regions
-        public IQueryable<Region> GetRegions()
+        public List<Region> GetRegions()
         {
-            return db.Regions;
+            return db.Regions.ToList();
         }
 
         // GET: api/Regions/5
