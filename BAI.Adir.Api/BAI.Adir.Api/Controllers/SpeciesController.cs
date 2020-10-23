@@ -8,6 +8,7 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using System.Web.UI.WebControls.Expressions;
 using BAI.Adir.Api.Domain.Context;
 using BAI.Adir.Api.Domain.Model;
 
@@ -20,7 +21,8 @@ namespace BAI.Adir.Api.Controllers
         // GET: api/Species
         public IQueryable<Species> GetSpecies()
         {
-            return db.Species;
+            return db.Species.OrderBy(p=>p.Name);
+           
         }
 
         // GET: api/Species/5
@@ -38,7 +40,7 @@ namespace BAI.Adir.Api.Controllers
 
         // PUT: api/Species/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutSpecies(int id, Species species)
+        public IHttpActionResult PutSpecies(int id, [FromBody]Species species)
         {
             if (!ModelState.IsValid)
             {
@@ -49,11 +51,14 @@ namespace BAI.Adir.Api.Controllers
             {
                 return BadRequest();
             }
-
+            
+            species.ModifiedOn = DateTime.Now;
             db.Entry(species).State = EntityState.Modified;
 
             try
             {
+
+               
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException)
@@ -114,6 +119,30 @@ namespace BAI.Adir.Api.Controllers
         private bool SpeciesExists(int id)
         {
             return db.Species.Count(e => e.SpeciesId == id) > 0;
+        }
+
+        //FILTER
+        [Route("api/Species/Filter")]
+        public IHttpActionResult Get(string value)
+
+        {
+            var context = new AdirContext();
+
+            IQueryable<Species> query = context.Species;
+        
+                if (!string.IsNullOrEmpty(value))
+                {
+                    query = query.Where(p => p.Name.Contains(value));
+                }
+                query = query.OrderBy(p => p.Name);
+                var responseData = query.ToList();
+                 
+
+
+            return Ok(responseData);
+
+           
+          
         }
     }
 }

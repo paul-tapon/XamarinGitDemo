@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.Species.SpeciesBrowser">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" x:Name="ButtonAdd"/>
+        </ContentPage.ToolbarItems>
+      <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Padding="7,10">
+
+                <StackLayout Orientation= "Horizontal">
+                    <Entry x:Name="txtQuery" Placeholder="Type animal species" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+                <StackLayout Orientation= "Horizontal">
+                    <Button Text="Search" Clicked="Button_Clicked" HorizontalOptions="FillAndExpand"/>
+                    <Button Text="Reset" Clicked="Button_Clicked_1" HorizontalOptions="FillAndExpand"/>
+                </StackLayout>
+
+                <ListView x:Name="SpeciesListView" ItemsSource="{Binding Species}" HasUnevenRows="True" RefreshCommand="{Binding LoadSpeciesCommand}"
+                  IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" 
+                  CachingStrategy="RecycleElement" ItemTapped="SpeciesListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="{Binding Name}" FontSize="Medium" TextColor="DarkBlue" FontAttributes="Bold" Margin="5,5"/>
+                                            <Label Text="{Binding Type, StringFormat= '({0})'}" TextColor="MediumBlue" FontSize="Medium" FontAttributes="Italic" Margin="5,5"/>
+                                        </StackLayout>
+                                        
+                                        </StackLayout>
+                                    <Label Text="{Binding CommonDiseases,StringFormat='Common Disease/s : {0}'}" Margin="10,0,0,1" FontSize="Small" TextColor="Black" FontAttributes="Bold"/>
+                                        <!--<Image Source="{Binding DisplayPhotoUrl}"  WidthRequest="100" HeightRequest="100" />-->
+                                    </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

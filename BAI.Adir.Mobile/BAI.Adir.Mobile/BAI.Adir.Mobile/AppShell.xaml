@@ -2,6 +2,8 @@
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
        xmlns:local="clr-namespace:BAI.Adir.Mobile.Views"
+       xmlns:localSpecies="clr-namespace:BAI.Adir.Mobile.Views.Species"
+       
        Title="BAI.Adir.Mobile"
        x:Class="BAI.Adir.Mobile.AppShell">
 
@@ -84,6 +86,7 @@
 
         <ShellContent Title="About" Icon="tab_about.png" Route="AboutPage" ContentTemplate="{DataTemplate local:AboutPage}" />
         <ShellContent Title="Test" Icon="tab_feed.png" ContentTemplate="{DataTemplate local:TestPage}" />
+        <ShellContent Title="Species" Icon="tab_carabao.png" Route="SpeciesBrowser" ContentTemplate="{DataTemplate local:Species.SpeciesBrowser}" />
 
     </FlyoutItem>
 
