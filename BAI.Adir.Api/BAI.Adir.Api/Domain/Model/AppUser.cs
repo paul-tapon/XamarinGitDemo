@@ -41,7 +41,8 @@ namespace BAI.Adir.Api.Domain.Model
 
         [MaxLength(500)]
         public string PasswordHash { get; set; }
-
+        [MaxLength(500)]
+        public string PasswordSalt { get; set; }
 
         [NotMapped]
         public string FullName

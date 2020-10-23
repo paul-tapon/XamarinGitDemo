@@ -45,9 +45,16 @@ namespace BAI.Adir.Api.Domain.Model
         //location
         [ForeignKey("Barangay")]
         public int BarangayId { get; set; }
-        public Barangay Barangay { get; set; }
+        public virtual Barangay Barangay { get; set; }
 
         public double Latitude { get; set; }
         public double Longitude { get; set; }
+
+        [ForeignKey("Species")]
+
+        public int SpeciesId { get; set; }
+
+        public virtual Species Species { get; set; }
+        
     }
 }

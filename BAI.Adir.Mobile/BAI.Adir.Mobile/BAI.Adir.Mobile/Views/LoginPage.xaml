@@ -7,19 +7,32 @@
              x:Class="BAI.Adir.Mobile.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
-        <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
+        <StackLayout Padding="10,0,10,10">
+            <Image x:Name="ProfilePicture" HeightRequest="200" Source="https://i.ibb.co/sH4VvmC/login.jpg"/>
+            <StackLayout VerticalOptions="CenterAndExpand">
+                <Entry x:Name="TextUsername" Placeholder="Username"/>
+                <Entry x:Name="TextPassword" IsPassword="True" Placeholder="Password"/>
+                <Button VerticalOptions="Center" x:Name="ButtonLogin" Text="Login" Clicked="ButtonLogin_Clicked"/>
+            </StackLayout>
+            <StackLayout VerticalOptions="EndAndExpand">
+                <Label Text="- or -" HorizontalOptions="Center" FontSize="Medium"/>
+                <Button Text="Skip Login" HorizontalOptions="Center" BackgroundColor="DarkTurquoise"/>
+                <Button Text="Create New Account"  HorizontalOptions="Center" BackgroundColor="DarkTurquoise"/>
+            </StackLayout>
+                    <StackLayout Padding="10,0,10,0" VerticalOptions="Center">
             <Button VerticalOptions="Center" Text="Login" Command="{Binding LoginCommand}"/>
-            <Label>
+            <Label Margin="0,10">
                 <Label.FormattedText>
                     <FormattedString>
                         <Span Text="Register" TextColor="Blue" FontSize="18"  TextDecorations="Underline">
                             <Span.GestureRecognizers>
-                                <TapGestureRecognizer></TapGestureRecognizer>
+                                <TapGestureRecognizer Command="{Binding RegisterCommand}"></TapGestureRecognizer>
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
+        </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -14,6 +14,10 @@ namespace BAI.Adir.Mobile
             InitializeComponent();
             Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
             Routing.RegisterRoute(nameof(NewItemPage), typeof(NewItemPage));
+            Routing.RegisterRoute(nameof(TestPage), typeof(TestPage));
+            //.RegisterRoute(nameof(UserProfile), typeof(UserProfile));
+            //Routing.RegisterRoute(nameof(ChangePasswordPage), typeof(ChangePasswordPage));
+
             Routing.RegisterRoute(nameof(SpeciesDetails), typeof(SpeciesDetails));
         }
 

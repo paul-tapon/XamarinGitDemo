@@ -19,7 +19,7 @@ namespace BAI.Adir.Api.Controllers
         private AdirContext db = new AdirContext();
 
         // GET: api/Species
-        public IQueryable<Species> GetSpecies()
+        public List<Species> GetSpecies()
         {
             return db.Species.OrderBy(p=>p.Name);
            

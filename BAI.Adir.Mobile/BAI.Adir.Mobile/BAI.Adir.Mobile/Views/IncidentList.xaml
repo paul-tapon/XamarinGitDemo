@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BAI.Adir.Mobile.Views.IncidentList">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <StackLayout Orientation="Horizontal" Margin="10" Padding="5">
+                <!--region-->
+                <Picker x:Name="Region" Title="Region" HorizontalOptions="FillAndExpand" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="Region_SelectedIndexChanged" >
+
+                    <!--<Picker.Items>
+                        <x:String>I</x:String>
+                        <x:String>I</x:String>
+                        <x:String>III</x:String>
+
+                        <x:String>IV</x:String>
+                        <x:String>V</x:String>--><!--
+
+                    </Picker.Items>-->
+
+                </Picker>
+                <!--Province-->
+                <Picker x:Name="Province" Title="Province" HorizontalOptions="FillAndExpand" ItemDisplayBinding="{Binding Name}" SelectedIndexChanged="Province_SelectedIndexChanged" >
+                    <!--<Picker.Items>
+                        <x:String>Cavite</x:String>
+                        <x:String>Laguna</x:String>
+                        <x:String>Batangas</x:String>
+
+                        <x:String>Rizal</x:String>
+                        <x:String>Quezon</x:String>
+
+                    </Picker.Items>-->
+
+                </Picker>
+
+                <!--Municipality-->
+                <Picker x:Name="Municipality" Title="Municipality" HorizontalOptions="FillAndExpand" ItemDisplayBinding="{Binding Name}"  >
+                    <!--<Picker.Items>
+                        <x:String>Lipa</x:String>
+                        <x:String>Malvar</x:String>
+                        <x:String>Tanauan</x:String>
+
+
+                        <x:String>Balete</x:String>
+                        <x:String>Mataas na Kahoy</x:String>
+
+                    </Picker.Items>-->
+
+                </Picker>
+
+            </StackLayout>
+            
+            <StackLayout Orientation="Horizontal">
+
+
+                <Picker x:Name="SpeciesKind" Title="Species" HorizontalOptions="FillAndExpand" ItemDisplayBinding="{Binding Name}" >
+                    <!--<Picker.Items>
+                        <x:String>Canine</x:String>
+                        <x:String>Caprine</x:String>
+                        <x:String>Pig</x:String>
+
+
+                        <x:String>Cow</x:String>
+                        <x:String>Lamb</x:String>
+
+                    </Picker.Items>-->
+
+                </Picker>
+
+                <Button x:Name="btnSearch" Text="Search" Clicked="btnSearch_Clicked"/>
+                <Button x:Name="btnReset" Text="Reset" Clicked="btnReset_Clicked"/>
+
+            </StackLayout>
+            <!--<StackLayout Orientation="Horizontal">
+            
+            </StackLayout-->
+
+            <ListView x:Name="SummaryIncident" ItemsSource="{Binding DiseaseIncidents}" HasUnevenRows="True" 
+                   IsPullToRefreshEnabled="True" IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                  CachingStrategy="RecycleElement" ItemTapped="SummaryIncident_ItemTapped" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.View>
+                                <StackLayout >
+                                    <StackLayout Orientation="Horizontal" Margin="0" Padding="1,0,0,1" HorizontalOptions="FillAndExpand">
+                                        <StackLayout>
+                                            <Label Text="Species" FontSize="Small" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding SpeciesName}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label Text="Infected" FontSize="Small" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding NumberOfInfected}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label Text="Deaths" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding NumberOfDeaths}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+                                        <StackLayout>
+                                            <Label Text="Population" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding Population}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                        </StackLayout>
+
+
+
+                                    </StackLayout>
+                                    <StackLayout Padding="30,0,0,0" Margin="0">
+                                        <Label Text="Symptoms" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0" />
+                                        <Label Text="{Binding Symptoms}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0" />
+
+                                    </StackLayout>
+                                    <StackLayout>
+
+                                        <StackLayout Padding="30,0,0,0" Margin="0">
+                                            <Label Text="Address" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0" />
+                                            <Label Text="{Binding FullAddress}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" Margin="0" />
+
+                                        </StackLayout>
+                                    </StackLayout>
+                                        
+                                
+
+
+                                        <StackLayout Padding="30,0,0,0">
+
+                                        <Label Text="Reported by" FontSize="Small" TextColor="DarkCyan" HorizontalOptions="FillAndExpand" Margin="0"/>
+                                        <StackLayout Orientation="Horizontal" Margin="0" >
+                                            <Label Text="{Binding ReportedByFirstname}" FontSize="Small" TextColor="Black" Margin="0"/>
+                                        <Label Text="{Binding ReportedByLastname}" FontSize="Small" TextColor="Black" Margin="0"/>
+                                            <!--<Label Text="-" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>-->
+                                            <!--<Label Text="{Binding price, StringFormat='{0:C}'}" FontSize="Medium" TextColor="DarkCyan" Margin="5"/>-->
+
+                                        </StackLayout>
+                                    </StackLayout>
+
+
+
+                                </StackLayout>
+                                    <!--//<Label Text="{Binding category}" Margin="10,5"/>-->
+                               
+
+
+                            </ViewCell.View>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!--<Button x:Name="Back" Text="GoBack" Clicked="Back_Clicked"/>-->
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
