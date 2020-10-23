@@ -7,6 +7,7 @@
              x:Class="BAI.Adir.Mobile.Views.LoginPage"
              Shell.NavBarIsVisible="False">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Padding="10,0,10,10">
             <Image x:Name="ProfilePicture" HeightRequest="200" Source="https://i.ibb.co/sH4VvmC/login.jpg"/>
             <StackLayout VerticalOptions="CenterAndExpand">
@@ -34,5 +35,6 @@
             </Label>
         </StackLayout>
         </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

@@ -1,5 +1,6 @@
 ﻿using BAI.Adir.Api.Domain.Context;
 using BAI.Adir.Api.Domain.Model;
+using BAI.Adir.Api.Helper;
 using BAI.Adir.Api.Models.DTO;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace BAI.Adir.Api.Controllers
         //    return product;
         //}
         //[Authorize]
-        public IHttpActionResult Get( int id)
+        public IHttpActionResult Get(int id)
         {
 
             var context = new AdirContext();
@@ -41,16 +42,26 @@ namespace BAI.Adir.Api.Controllers
         //    return Ok(loginx);
         //}
         [HttpPut]
-        public HttpResponseMessage Put(int id, [FromBody] AppUser user)
+        public HttpResponseMessage Put(int id, [FromBody] ChangePasswordDto changePass)
         {
-            var context = new AdirContext();
+            if (id != changePass.AppUserId)
+                return new HttpResponseMessage(HttpStatusCode.NotFound); //invalid submission
 
+            var context = new AdirContext();
             var passwordUpdate = context
                                 .AppUsers
                                 .FirstOrDefault(e => e.AppUserId == id);
-           if (passwordUpdate == null) return new HttpResponseMessage(HttpStatusCode.NotFound);
-           
-            passwordUpdate.PasswordHash = user.PasswordHash;
+
+            if (passwordUpdate == null) return new HttpResponseMessage(HttpStatusCode.NotFound); //user not found
+
+            var genSalt = EncryptionHelper.CreateSalt();
+
+            if (!EncryptionHelper.CheckPassword(changePass.OldPassword,passwordUpdate.PasswordHash,passwordUpdate.PasswordSalt))
+                return new HttpResponseMessage(HttpStatusCode.NotFound); //old password is wrong
+
+            passwordUpdate.PasswordHash = EncryptionHelper.EncryptPassword(changePass.NewPassword, genSalt);
+            passwordUpdate.PasswordSalt = genSalt;
+
             context.SaveChanges();
             return new HttpResponseMessage(HttpStatusCode.Created);
         }

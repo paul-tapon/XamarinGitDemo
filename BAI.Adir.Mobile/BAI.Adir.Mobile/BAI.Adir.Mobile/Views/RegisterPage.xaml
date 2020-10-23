@@ -3,14 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="BAI.Adir.Mobile.Views.RegisterPage"
              Shell.PresentationMode="ModalAnimated"
-             Title="Register User"
-             BackgroundColor="Black">
+             Title="Register User">
     <ContentPage.Content>
+        <ScrollView>
         <StackLayout Margin="10">
             <StackLayout>
             <!--Change to browse-->
                 <!--Image Source="https://bit.ly/3dG7Aes" HeightRequest="150" WidthRequest="150"/-->
-                <Label Text="Welcome to ADIR!" FontSize="30" HorizontalTextAlignment="Center" Margin="0,150,0,150"/>
+                <Label Text="Welcome to ADIR!" FontSize="30" HorizontalTextAlignment="Center" Margin="0,30,0,30"/>
 
                 <Label Text="First Name" FontSize="Medium" />
             <Entry x:Name="entryFirstName" TextChanged="EntryTextChanged" Text="{Binding RegisterDto.FirstName, Mode=TwoWay}" FontSize="Medium" />
@@ -35,6 +35,7 @@
                 <Button x:Name="buttonSave" Clicked="buttonSave_Clicked" Text="Save" Command="{Binding SaveCommand}" HorizontalOptions="FillAndExpand"></Button>
             </StackLayout>
         </StackLayout>
-        </StackLayout>
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
