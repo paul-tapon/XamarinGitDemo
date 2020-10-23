@@ -87,7 +87,7 @@
                                     <StackLayout Orientation="Horizontal" Margin="0" Padding="1,0,0,1" HorizontalOptions="FillAndExpand">
                                         <StackLayout>
                                             <Label Text="Species" FontSize="Small" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>
-                                            <Label Text="{Binding SpeciesName}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
+                                            <Label Text="{Binding Species.Name}" FontSize="Small" TextColor="Black" HorizontalOptions="FillAndExpand" WidthRequest="120" Margin="0" HorizontalTextAlignment="Center"/>
                                         </StackLayout>
                                         <StackLayout>
                                             <Label Text="Infected" FontSize="Small" TextColor="DarkCyan" Margin="0" HorizontalOptions="FillAndExpand" WidthRequest="120" HorizontalTextAlignment="Center"/>

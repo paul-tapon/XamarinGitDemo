@@ -11,7 +11,7 @@
                 </StackLayout>
                 <StackLayout HorizontalOptions="Center">
                     <Label Text="Species" TextColor="Red"/>
-                    <Label Text="{Binding DiseaseIncident.SpeciesName}" TextColor="Blue"/>
+                    <Label Text="{Binding DiseaseIncident.Species.Name}" TextColor="Blue"/>
                     
                 </StackLayout>
 

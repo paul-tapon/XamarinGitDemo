@@ -71,7 +71,7 @@ namespace BAI.Adir.Mobile.Views
         private async void Save_Clicked(object sender, EventArgs e)
         {
             var client = new RestClient(Settings.AdirApiUrl);
-            var request = new RestRequest("diseaseincidents", (Method)DataFormat.Json);
+            var request = new RestRequest("diseaseincident",DataFormat.Json);
 
             var diseaseincident = new Models.DiseaseIncident();
             var DiseaseIncidentViewModel = new DiseaseIncidentViewModel();
@@ -92,20 +92,22 @@ namespace BAI.Adir.Mobile.Views
 
             var brgy = BarangaySelect.SelectedItem as Barangay;
 
+            diseaseincident.Barangay = brgy;
+            //diseaseincident.SpeciesName = "";
             diseaseincident.BarangayId = (int)brgy.BarangayId;
-            diseaseincident.Longitude = Convert.ToDouble(Longitude.Text);
-            diseaseincident.Latitude = Convert.ToDouble(Longitude.Text);
+            diseaseincident.Longitude = 0;
+            diseaseincident.Latitude = 0;
 
 
             // diseaseincident.SpeciesId = DiseaseIncidentViewModel.SelectedSpecies.SpeciesId;
 
-            var spcs = SpeciesSelect.SelectedItem as Models.Species;
+            var spcs = SpeciesSelect.SelectedItem as Models.SpeciesDTO;
 
             diseaseincident.SpeciesId = (int)spcs.SpeciesId;
 
-            //diseaseincident.IsActive = true;
-            //diseaseincident.CreatedByAppUserId = 1;
-            //diseaseincident.CreatedOn = DateTime.Now;
+            diseaseincident.IsActive = true;
+            diseaseincident.CreatedByAppUserId = 1;
+            diseaseincident.CreatedOn = DateTime.Now;
             request.Method = Method.POST;
             request.AddJsonBody(diseaseincident);
             var response = await client.ExecuteAsync(request);

@@ -58,16 +58,7 @@ namespace BAI.Adir.Mobile.Models
         public int SpeciesId { get; set; }
 
         public Species Species { get; set; }
-
-        public string SpeciesName
-        {
-            get
-            {
-                return Species.Name;
-            }
-        }
-
-
+    
 
         public string FullAddress
         {
@@ -79,5 +70,9 @@ namespace BAI.Adir.Mobile.Models
 
             }
         }
+
+        public bool IsActive { get; internal set; }
+        public int CreatedByAppUserId { get; internal set; }
+        public DateTime CreatedOn { get; internal set; }
     }
 }

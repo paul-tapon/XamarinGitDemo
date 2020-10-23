@@ -18,7 +18,7 @@ namespace BAI.Adir.Mobile.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class IncidentList : ContentPage
     {
-        public ObservableCollection<DiseaseIncident> DiseaseIncidents { get; set; }
+        public ObservableCollection<Models.DiseaseIncident> DiseaseIncidents { get; set; }
 
 
         public ObservableCollection<Region> Regions { get; set; }
@@ -33,7 +33,7 @@ namespace BAI.Adir.Mobile.Views
         {
             InitializeComponent();
             BindingContext = this;
-            DiseaseIncidents = new ObservableCollection<DiseaseIncident>();
+            DiseaseIncidents = new ObservableCollection<Models.DiseaseIncident>();
             ExecuteLoadRegionCommand();
             ExecuteLoadSpeciesCommand();
 
@@ -63,7 +63,7 @@ namespace BAI.Adir.Mobile.Views
                 request.Method = Method.GET;
 
                 var response = await client.ExecuteAsync(request);
-                var responseData = JsonConvert.DeserializeObject<List<DiseaseIncident>>(response.Content);
+                var responseData = JsonConvert.DeserializeObject<List<Models.DiseaseIncident>>(response.Content);
                 foreach (var diseaseIncident in responseData)
                 {
                     DiseaseIncidents.Add(diseaseIncident);
@@ -144,7 +144,7 @@ namespace BAI.Adir.Mobile.Views
                 request.Method = Method.GET;
 
                 var response = await client.ExecuteAsync(request);
-                var responseData = JsonConvert.DeserializeObject<List<DiseaseIncident>>(response.Content);
+                var responseData = JsonConvert.DeserializeObject<List<Models.DiseaseIncident>>(response.Content);
                 DiseaseIncidents.Clear();
                 foreach (var incidentList in responseData)
                 {

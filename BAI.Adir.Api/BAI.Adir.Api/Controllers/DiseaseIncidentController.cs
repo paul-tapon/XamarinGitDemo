@@ -61,15 +61,17 @@ namespace BAI.Adir.Api.Controllers
         }
 
         [ResponseType(typeof(DiseaseIncident))]
-        public IHttpActionResult PostDiseaseIncident(DiseaseIncident diseaseIncident)
+        public IHttpActionResult PostDiseaseIncident([FromBody]DiseaseIncident diseaseIncident)
         {
             var context = new AdirContext();
 
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
+            //if (!ModelState.IsValid)
+            //{
+            //    return BadRequest(ModelState);
+            //}
+            diseaseIncident.Barangay = null;
+            diseaseIncident.CreatedOn = DateTime.Now;
+            diseaseIncident.ModifiedOn = DateTime.Now;
             context.DiseaseIncidents.Add(diseaseIncident);
             context.SaveChanges();
 
